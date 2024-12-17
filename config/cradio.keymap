@@ -98,10 +98,10 @@
 
         Mouse {
             bindings = <
-&trans  &trans  &lt 8 E  &trans  &trans    &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans
-&trans  &trans  &trans   &trans  &trans    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
-&trans  &trans  &trans   &trans  &trans    &trans          &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans
-                         &trans  &trans    &trans          &mkp LCLK
+&trans  &to 9   &to 8   &trans  &trans    &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans
+&trans  &trans  &trans  &trans  &trans    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
+&trans  &trans  &trans  &trans  &trans    &trans          &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans
+                        &trans  &trans    &trans          &mkp LCLK
             >;
         };
 
@@ -137,6 +137,15 @@
 &trans  &trans  &trans  &trans  &trans    &msc SCRL_UP    &trans                 &mouse_fast MOVE_UP    &trans                  &trans
 &trans  &trans  &trans  &trans  &trans    &msc SCRL_DOWN  &mouse_fast MOVE_LEFT  &mouse_fast MOVE_DOWN  &mouse_fast MOVE_RIGHT  &mkp RCLK
 &trans  &trans  &trans  &trans  &trans    &trans          &msc SCRL_LEFT         &mkp MCLK              &msc SCRL_RIGHT         &trans
+                        &trans  &trans    &trans          &mkp LCLK
+            >;
+        };
+
+        MouseSlow {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans    &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans
+&trans  &trans  &trans  &trans  &trans    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
+&trans  &trans  &trans  &trans  &trans    &trans          &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans
                         &trans  &trans    &trans          &mkp LCLK
             >;
         };
