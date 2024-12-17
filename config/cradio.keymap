@@ -55,6 +55,16 @@
             time-to-max-speed-ms = <2>;
             acceleration-exponent = <1>;
         };
+
+        mouse_super_fast: zip_xy_scaler {
+            compatible = "zmk,input-processor-zip-xy-scaler";
+            xy_scale = <9 1>;
+        };
+
+        mouse_super_slow: zip_xy_scaler {
+            compatible = "zmk,input-processor-zip-xy-scaler";
+            xy_scale = <1 9>;
+        };
     };
 
     keymap {
@@ -134,10 +144,10 @@
 
         MouseFast {
             bindings = <
-&trans  &trans  &trans  &trans  &trans    &msc SCRL_UP    &trans                 &mouse_fast MOVE_UP    &trans                  &trans
-&trans  &trans  &trans  &trans  &trans    &msc SCRL_DOWN  &mouse_fast MOVE_LEFT  &mouse_fast MOVE_DOWN  &mouse_fast MOVE_RIGHT  &mkp RCLK
-&trans  &trans  &trans  &trans  &trans    &trans          &msc SCRL_LEFT         &mkp MCLK              &msc SCRL_RIGHT         &trans
-                        &trans  &trans    &trans          &mkp LCLK
+&trans  &to 9   &to 8   &trans  &trans    &msc SCRL_UP mouse_super_fast    &trans                           &mmv MOVE_UP    mouse_super_fast  &trans                             &trans
+&trans  &trans  &trans  &trans  &trans    &msc SCRL_DOWN mouse_super_fast  &mmv MOVE_LEFT mouse_super_fast  &mmv MOVE_DOWN  mouse_super_fast  &mmv MOVE_RIGHT  mouse_super_fast  &mkp RCLK
+&trans  &trans  &trans  &trans  &trans    &trans                           &msc SCRL_LEFT mouse_super_fast  &mkp MCLK                         &msc SCRL_RIGHT  mouse_super_fast  &trans
+                        &trans  &trans    &trans                           &mkp LCLK
             >;
         };
 
