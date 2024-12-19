@@ -8,6 +8,18 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 50    // default: 10
 
+// Layer aliases
+#define BASE 0
+#define FUN 1
+#define NUM 2
+#define NAV 3
+#define MEDIA 4
+#define SYMA 5
+#define SYMB 6
+#define MOUSE 7
+#define MOUSEFAST 8
+#define MOUSESLOW 9
+
 &mmv {
     time-to-max-speed-ms = <80>;
     acceleration-exponent = <10>;
@@ -20,14 +32,14 @@
 
 &mmv_input_listener {
     set_mouse_fast {
-        layers = <MouseFast>;
+        layers = <MOUSEFAST>;
         input-processors = <&zip_xy_scaler 5 1>;
     };
 };
 
 &mmv_input_listener {
     set_mouse_slow {
-        layers = <MouseSlow>;
+        layers = <MOUSESLOW>;
         input-processors = <&zip_xy_scaler 1 4>;
     };
 };
@@ -55,7 +67,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        Base {
+        BASE {
             bindings = <
 &lt 6 Q  &kp W             &lt 2 E                     &lt 1 R                 &lt 4 T               &kp Y               &kp U                   &kp I                           &kp O             &mt RIGHT_ALT P
 &lt 5 A  &mt LEFT_SHIFT S  &mt LEFT_GUI D              &mt LEFT_ALT F          &mt LEFT_CONTROL G    &mt LEFT_CONTROL H  &mt LEFT_ALT J          &mt LEFT_GUI K                  &mt LEFT_SHIFT L  &kp TAB
@@ -64,7 +76,7 @@
             >;
         };
 
-        Fun {
+        FUN {
             bindings = <
 &trans  &trans  &trans  &trans        &trans    &trans        &kp F1  &kp F2   &kp F3   &kp F4
 &trans  &trans  &trans  &trans        &trans    &caps_word    &kp F5  &kp F6   &kp F7   &kp F8
@@ -73,7 +85,7 @@
             >;
         };
 
-        Num {
+        NUM {
             bindings = <
 &trans  &trans  &trans  &trans        &trans    &kp PLUS   &kp N1  &kp N2  &kp N3  &kp ASTERISK
 &trans  &trans  &trans  &trans        &trans    &kp N0     &kp N4  &kp N5  &kp N6  &dot_or_comma
@@ -82,7 +94,7 @@
             >;
         };
 
-        Nav {
+        NAV {
             bindings = <
 &trans  &trans  &trans  &trans            &trans    &none          &none     &kp UP_ARROW    &none            &kp LG(LEFT_ARROW)
 &trans  &trans  &trans  &trans            &trans    &kp PAGE_UP    &kp LEFT  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LG(RIGHT)
@@ -91,7 +103,7 @@
             >;
         };
 
-        Media {
+        MEDIA {
             bindings = <
 &none  &none  &none  &none             &none    &kp K_MUTE       &none        &none           &none  &none
 &none  &none  &none  &none             &none    &kp C_VOLUME_UP  &kp C_PLAY   &kp C_NEXT      &none  &kp C_BRIGHTNESS_INC
@@ -100,7 +112,7 @@
             >;
         };
 
-        SymA {
+        SYMA {
             bindings = <
 &trans  &trans  &trans  &trans        &trans    &kp CARET  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &trans  &trans  &trans  &trans        &trans    &kp GRAVE  &kp QUESTION          &kp EXCLAMATION        &kp SQT           &kp MINUS
@@ -109,7 +121,7 @@
             >;
         };
 
-        SymB {
+        SYMB {
             bindings = <
 &trans  &trans  &trans  &trans  &trans    &trans         &trans       &trans    &trans       &trans
 &trans  &trans  &trans  &trans  &trans    &kp AMPERSAND  &kp AT_SIGN  &kp HASH  &kp PERCENT  &kp DOLLAR
@@ -118,7 +130,7 @@
             >;
         };
 
-        Mouse {
+        MOUSE {
             bindings = <
 &none  &kp LEFT_SHIFT  &kp LEFT_GUI  &kp LEFT_ALT  &none    &none           &none           &mmv MOVE_UP    &none            &none
 &none  &to 8           &none         &to 9         &none    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
@@ -127,7 +139,7 @@
             >;
         };
 
-        MouseFast {
+        MOUSEFAST {
             bindings = <
 &none  &none  &none  &none  &none    &msc SCRL_UP    &none           &mmv MOVE_UP    &none            &none
 &none  &none  &none  &none  &none    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
@@ -136,7 +148,7 @@
             >;
         };
 
-        MouseSlow {
+        MOUSESLOW {
             bindings = <
 &none  &none  &none  &none  &none    &msc SCRL_UP    &none           &mmv MOVE_UP    &none            &none
 &none  &none  &none  &none  &none    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
