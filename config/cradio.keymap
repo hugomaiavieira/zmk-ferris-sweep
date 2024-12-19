@@ -23,8 +23,8 @@
 #define MOUSEXSLOW 10
 
 &mmv {
-    time-to-max-speed-ms = <80>;
-    acceleration-exponent = <10>;
+    time-to-max-speed-ms = <120>;
+    acceleration-exponent = <6>;
 };
 
 &msc {
@@ -53,25 +53,14 @@
     };
 };
 
-&msc_input_listener {
-    set_mouse_fast {
-        layers = <MOUSEFAST>;
-        input-processors = <&zip_xy_scaler 2 1>;
-    };
+&mt {
+    flavor = "balanced";
+    tapping-term-ms = <150>;
 };
 
-&msc_input_listener {
-    set_mouse_slow {
-        layers = <MOUSESLOW>;
-        input-processors = <&zip_xy_scaler 1 2>;
-    };
-};
-
-&msc_input_listener {
-    set_mouse_extra_slow {
-        layers = <MOUSEXSLOW>;
-        input-processors = <&zip_xy_scaler 1 4>;
-    };
+&lt {
+    flavor = "balanced";
+    tapping-term-ms = <150>;
 };
 
 / {
