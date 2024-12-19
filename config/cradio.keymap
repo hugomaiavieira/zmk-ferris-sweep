@@ -18,9 +18,9 @@
 #define SYMA 5
 #define SYMB 6
 #define MOUSE 7
-#define MOUSEFAST 8
-#define MOUSESLOW 9
-#define MOUSEXSLOW 10
+#define MOUSEXFAST 8
+#define MOUSEFAST 9
+#define MOUSESLOW 10
 
 // &mmv {
 //     time-to-max-speed-ms = <120>;
@@ -29,27 +29,27 @@
 
 &msc {
     time-to-max-speed-ms = <80>;
-    acceleration-exponent = <10>;
+    acceleration-exponent = <5>;
 };
 
 &mmv_input_listener {
     set_mouse_fast {
+        layers = <MOUSEXFAST>;
+        input-processors = <&zip_xy_scaler 4 1>;
+    };
+};
+
+&mmv_input_listener {
+    set_mouse_slow {
         layers = <MOUSEFAST>;
         input-processors = <&zip_xy_scaler 2 1>;
     };
 };
 
 &mmv_input_listener {
-    set_mouse_slow {
+    set_mouse_extra_slow {
         layers = <MOUSESLOW>;
         input-processors = <&zip_xy_scaler 1 2>;
-    };
-};
-
-&mmv_input_listener {
-    set_mouse_extra_slow {
-        layers = <MOUSEXSLOW>;
-        input-processors = <&zip_xy_scaler 1 4>;
     };
 };
 
@@ -148,6 +148,15 @@
             >;
         };
 
+        MOUSEXFAST {
+            bindings = <
+&none  &none  &none  &none  &none    &none           &none           &mmv MOVE_UP    &none            &none
+&none  &none  &none  &none  &none    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
+&none  &none  &none  &none  &none    &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &none
+                     &none  &none    &none           &mkp LCLK
+            >;
+        };
+
         MOUSEFAST {
             bindings = <
 &none  &none  &none  &none  &none    &none           &none           &mmv MOVE_UP    &none            &none
@@ -158,15 +167,6 @@
         };
 
         MOUSESLOW {
-            bindings = <
-&none  &none  &none  &none  &none    &none           &none           &mmv MOVE_UP    &none            &none
-&none  &none  &none  &none  &none    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
-&none  &none  &none  &none  &none    &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &none
-                     &none  &none    &none           &mkp LCLK
-            >;
-        };
-
-        MOUSEXSLOW {
             bindings = <
 &none  &none  &none  &none  &none    &none           &none           &mmv MOVE_UP    &none            &none
 &none  &none  &none  &none  &none    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
