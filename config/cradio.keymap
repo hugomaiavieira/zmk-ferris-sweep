@@ -1,7 +1,9 @@
+#include <input/processors.dtsi>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <input/processors.dtsi>
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 50    // default: 10
@@ -37,18 +39,6 @@
             label = "DOT_OR_COMMA";
             #binding-cells = <0>;
             bindings = <&kp PERIOD>, <&kp COMMA>;
-        };
-
-        mouse_fast: mouse_fast {
-            compatible = "zmk,behavior-input-two-axis";
-            label = "MOUSE_FAST";
-            #binding-cells = <1>;
-            x-input-code = <0>;
-            y-input-code = <1>;
-            delay-ms = <0>;
-            trigger-period-ms = <8>;
-            time-to-max-speed-ms = <2>;
-            acceleration-exponent = <3>;
         };
 
         mouse_super_fast: mouse_super_fast {
@@ -131,7 +121,7 @@
         Mouse {
             bindings = <
 &none  &kp LEFT_SHIFT  &kp LEFT_GUI  &kp LEFT_ALT  &none    &none           &none           &mmv MOVE_UP    &none            &none
-&none  &none           &none         &none         &none    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
+&none  &to 8           &none         &to 9         &none    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
 &none  &none           &none         &none         &none    &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &none
                                      &none         &none    &none           &mkp LCLK
             >;
@@ -139,19 +129,19 @@
 
         MouseFast {
             bindings = <
-&trans  &trans  &trans  &trans  &trans    &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans
-&trans  &trans  &trans  &trans  &trans    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
-&trans  &trans  &trans  &trans  &trans    &trans          &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans
-                        &trans  &trans    &trans          &mkp LCLK
+&none  &none  &none  &none  &none    &msc SCRL_UP    &none           &mmv MOVE_UP    &none            &none
+&none  &none  &none  &none  &none    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
+&none  &none  &none  &none  &none    &none           &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &none
+                     &none  &none    &none           &mkp LCLK
             >;
         };
 
         MouseSlow {
             bindings = <
-&trans  &trans  &trans  &trans  &trans    &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans
-&trans  &trans  &trans  &trans  &trans    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
-&trans  &trans  &trans  &trans  &trans    &trans          &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans
-                        &trans  &trans    &trans          &mkp LCLK
+&none  &none  &none  &none  &none    &msc SCRL_UP    &none           &mmv MOVE_UP    &none            &none
+&none  &none  &none  &none  &none    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp RCLK
+&none  &none  &none  &none  &none    &none           &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &none
+                     &none  &none    &none           &mkp LCLK
             >;
         };
     };
