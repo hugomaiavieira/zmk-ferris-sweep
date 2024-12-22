@@ -6,8 +6,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 // #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
-
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 80    // default: 10
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 50       // default: 10
 
 // Layer aliases
 
@@ -16,12 +15,11 @@
 #define NUM 2
 #define NAV 3
 #define MEDIA 4
-#define SYMA 5
-#define SYMB 6
-#define MOUSE 7
-#define MOUSEXFAST 8
-#define MOUSEFAST 9
-#define MOUSESLOW 10
+#define SYM 5
+#define MOUSE 6
+#define MOUSEXFAST 7
+#define MOUSEFAST 8
+#define MOUSESLOW 9
 
 // &mmv {
 //     time-to-max-speed-ms = <120>;
@@ -29,11 +27,19 @@
 // };
 
 &msc {
-    time-to-max-speed-ms = <150>;
+    time-to-max-speed-ms = <180>;
     acceleration-exponent = <2>;
 };
 
 &mmv_input_listener {
+    set_mouse_fast {
+        layers = <MOUSEXFAST>;
+        input-processors = <&zip_xy_scaler 4 1>;
+        process-next;
+    };
+};
+
+&msc_input_listener {
     set_mouse_fast {
         layers = <MOUSEXFAST>;
         input-processors = <&zip_xy_scaler 4 1>;
